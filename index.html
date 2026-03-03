@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>普法测试题库</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app" class="mobile-layout">
+        <!-- 顶部导航 -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 id="pageTitle">题库浏览</h1>
+                <button id="searchToggle" class="icon-btn">🔍</button>
+            </div>
+            <div id="searchBar" class="search-container hidden">
+                <input type="text" id="全局搜索" placeholder="搜索题目内容...">
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="app-content">
+            <!-- 题库浏览视图 -->
+            <div id="viewBrowse" class="view">
+                <div class="current-cat-badge" id="activeCategoryName">全部题目</div>
+                <div id="questionList" class="question-list">
+                    <!-- Questions injected here -->
+                </div>
+            </div>
+
+            <!-- 分类选择视图 -->
+            <div id="viewCategories" class="view hidden">
+                <div class="category-grid" id="categoryGrid">
+                    <!-- Categories injected here -->
+                </div>
+            </div>
+
+            <!-- 模拟测评视图 -->
+            <div id="viewQuiz" class="view hidden">
+                <div class="quiz-welcome">
+                    <div class="quiz-icon">📝</div>
+                    <h2>全真模拟考试</h2>
+                    <p>50道题 / 45分钟 / 自动阅卷</p>
+                    <button id="startQuiz" class="btn-primary">开始测试</button>
+                </div>
+
+                <div id="quizContainer" class="hidden">
+                    <div class="quiz-meta">
+                        <span id="quizProgress">1 / 50</span>
+                        <span id="quizTimer" class="timer">45:00</span>
+                    </div>
+                    <div id="quizQuestion"></div>
+                    <div class="quiz-actions">
+                        <button id="prevBtn" class="btn-text">上一题</button>
+                        <button id="nextBtn" class="btn-primary">下一题</button>
+                        <button id="submitQuiz" class="btn-danger hidden">交卷</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部 Tab 栏 -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-view="browse">
+                <span class="icon">📚</span>
+                <span class="label">题库</span>
+            </button>
+            <button class="nav-item" data-view="categories">
+                <span class="icon">🗂️</span>
+                <span class="label">分类</span>
+            </button>
+            <button class="nav-item" data-view="quiz">
+                <span class="icon">🚀</span>
+                <span class="label">模考</span>
+            </button>
+        </nav>
+
+        <div id="toast" class="toast hidden"></div>
+    </div>
+    <script src="main.js" type="module"></script>
+</body>
+
+</html>
