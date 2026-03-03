@@ -17,10 +17,6 @@
         <header class="app-header">
             <div class="header-content">
                 <h1 id="pageTitle">题库浏览</h1>
-                <button id="searchToggle" class="icon-btn">🔍</button>
-            </div>
-            <div id="searchBar" class="search-container hidden">
-                <input type="text" id="全局搜索" placeholder="搜索题目内容...">
             </div>
         </header>
 
@@ -29,41 +25,56 @@
             <!-- 题库浏览视图 -->
             <div id="viewBrowse" class="view">
                 <div class="current-cat-badge" id="activeCategoryName">全部题目</div>
-                <div id="questionList" class="question-list">
-                    <!-- Questions injected here -->
-                </div>
+                <div id="questionList" class="question-list"></div>
             </div>
 
             <!-- 分类选择视图 -->
             <div id="viewCategories" class="view hidden">
-                <div class="category-grid" id="categoryGrid">
-                    <!-- Categories injected here -->
+                <div class="category-grid" id="categoryGrid"></div>
+            </div>
+
+            <!-- 错题库视图 -->
+            <div id="viewWrong" class="view hidden">
+                <div id="wrongEmpty" class="quiz-welcome">
+                    <div class="quiz-icon">✨</div>
+                    <p>太棒了，目前没有错题记录！</p>
                 </div>
+                <div id="wrongList" class="question-list"></div>
             </div>
 
             <!-- 模拟测评视图 -->
             <div id="viewQuiz" class="view hidden">
-                <div class="quiz-welcome">
+                <div id="quizWelcomePanel" class="quiz-welcome">
                     <div class="quiz-icon">📝</div>
                     <h2>全真模拟考试</h2>
-                    <p>50道题 / 45分钟 / 自动阅卷</p>
+                    <p>80道题 (单选40/判断20/多选20)</p>
                     <button id="startQuiz" class="btn-primary">开始测试</button>
                 </div>
 
                 <div id="quizContainer" class="hidden">
                     <div class="quiz-meta">
-                        <span id="quizProgress">1 / 50</span>
+                        <span id="quizProgress">1 / 80</span>
                         <span id="quizTimer" class="timer">45:00</span>
                     </div>
                     <div id="quizQuestion"></div>
-                    <div class="quiz-actions">
-                        <button id="prevBtn" class="btn-text">上一题</button>
-                        <button id="nextBtn" class="btn-primary">下一题</button>
-                        <button id="submitQuiz" class="btn-danger hidden">交卷</button>
-                    </div>
+                    <!-- 底部切换按钮将通 CSS 固定在屏幕下方 -->
+                </div>
+
+                <!-- 考后报告视图 -->
+                <div id="quizReport" class="hidden">
+                    <div id="reportSummary"></div>
+                    <div id="reportList" class="question-list" style="margin-top: 2rem;"></div>
+                    <button id="backFromReport" class="btn-primary" style="margin-top: 2rem;">回到模考首页</button>
                 </div>
             </div>
         </main>
+
+        <!-- 测评专用底部操作栏（固定在底部） -->
+        <div id="quizActions" class="quiz-bottom-actions hidden">
+            <button id="prevBtn" class="btn-secondary-fixed">上一题</button>
+            <button id="nextBtn" class="btn-primary-fixed">下一题</button>
+            <button id="submitQuiz" class="btn-danger-fixed hidden">提交交卷</button>
+        </div>
 
         <!-- 底部 Tab 栏 -->
         <nav class="bottom-nav">
@@ -74,6 +85,10 @@
             <button class="nav-item" data-view="categories">
                 <span class="icon">🗂️</span>
                 <span class="label">分类</span>
+            </button>
+            <button class="nav-item" data-view="wrong">
+                <span class="icon">❌</span>
+                <span class="label">错题</span>
             </button>
             <button class="nav-item" data-view="quiz">
                 <span class="icon">🚀</span>
