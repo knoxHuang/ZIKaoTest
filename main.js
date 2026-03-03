@@ -62,6 +62,7 @@ async function init() {
         bindEvents();
     } catch (err) {
         console.error(err);
+        alert('题库数据加载失败，请检查网络或文件路径。');
     }
 }
 
